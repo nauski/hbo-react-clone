@@ -12,7 +12,7 @@ export default function CreateUser() {
                     </span>
                 </div>
                 <div className="create-user__form">
-                    <img src="https://randomuser.me/api/portraits/women/95.jpg" alt="" className="create-user__user-img" />
+                    <Image src="https://randomuser.me/api/portraits/women/95.jpg" width="125px" height="125px" alt="" className="create-user__user-img" />
                     <div className="create-user__input-group">
                         <label>Name</label>
                         <input type="text" className="create-user__inputText" />

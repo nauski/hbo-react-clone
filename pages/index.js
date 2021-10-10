@@ -13,7 +13,7 @@ export default function Home() {
         </div>
         <div className="login-user__form">
           <div className="login-user__user-box">
-            <img src="https://randomuser.me/api/portraits/women/95.jpg" alt="" className="login-user__user-img" />
+            <Image src="https://randomuser.me/api/portraits/women/95.jpg" width="125px" height="125px" alt="" className="login-user__user-img" />
             <div className="login-user__username">Mary</div>
           </div>
         </div>

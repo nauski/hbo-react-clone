@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Account = () => {
     const loopComp = (comp, digit) => {
@@ -16,7 +18,7 @@ const Account = () => {
                 </div>
                 <div className="account__watch-list">
                     {loopComp((<div className="account__watch-video">
-                        <img src="https://muropaketti.com/wp-content/uploads/2016/08/rick_and_morty-nosto-1024x576.jpg" alt="" />
+                        <Image src="https://muropaketti.com/wp-content/uploads/2016/08/rick_and_morty-nosto-1024x576.jpg" width="220px" height="220px" alt="" />
                         <div className="account__watch-overlay">
                             <div className="account__watch-buttons">
                                 <div className="account__watch-circle">
@@ -34,16 +36,16 @@ const Account = () => {
             <div className="account__menu">
                 <ul className="account__main">
                     <li>
-                        <a href="/">My List</a>
+                        <Link href="/">My List</Link>
                     </li>
                 </ul>
                 <div className="side-nav__divider" />
                 <ul className="account__main">
                     <li>
-                        <a href="/" >Account</a>
+                        <Link href="/" >Account</Link>
                     </li>
                     <li>
-                        <a href="/" >Sign Out</a>
+                        <Link href="/" >Sign Out</Link>
                     </li>
                 </ul>
             </div>
