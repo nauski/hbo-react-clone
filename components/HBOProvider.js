@@ -16,6 +16,8 @@ export function HBOProvider({ children }) {
 
     const [sideNavOpen, setSideNavOpenAction] = useState(false)
     const [accountModalOpen, setAccountModalOpenAction] = useState(false)
+    const [searchOpen, setSearchOpenAction] = useState(false)
+
 
     return (
         <StateContext.Provider
@@ -26,7 +28,9 @@ export function HBOProvider({ children }) {
                 sideNavOpen,
                 setSideNavOpenAction,
                 accountModalOpen,
-                setAccountModalOpenAction
+                setAccountModalOpenAction,
+                searchOpen,
+                setSearchOpenAction
             }}>
             {children}
         </StateContext.Provider>

@@ -1,9 +1,10 @@
 import React from 'react';
 import Image from 'next/image'
-
+import { useStateContext } from '../../HBOProvider';
 
 const SearchModal
     = () => {
+        const globalState = useStateContext();
         const loopComp = (comp, digit) => {
             let thumbnails = []
             for (let i = 1; i < digit; i++) {
@@ -12,10 +13,10 @@ const SearchModal
             return thumbnails;
         }
         return (
-            <div className="search-modal">
+            <div className={`search-modal ${globalState.searchOpen ? 'search-modal--active' : ''}`}>
                 <div className="search-modal__input-group">
                     <input className="search-modal__input" type="text" placeholder="search for a title" defaultValue="" />
-                    <div className="search-modal__close-btn">
+                    <div className="search-modal__close-btn" onClick={() => globalState.setSearchOpenAction(!globalState.searchOpen)}>
                         <i className="fas fa-times" />
                     </div>
                 </div>

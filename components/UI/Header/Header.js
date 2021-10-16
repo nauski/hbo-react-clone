@@ -13,7 +13,7 @@ const Header = (props) => {
                 <div className="top-header__menu-btn" onClick={() => globalState.setSideNavOpenAction(true)}>
                     <i className="fas fa-bars"></i>
                 </div>
-                <div className="top-header__search-btn">
+                <div className="top-header__search-btn" onClick={() => globalState.setSearchOpenAction(true)}>
                     <i className="fas fa-search"></i>
                 </div>
             </div>
