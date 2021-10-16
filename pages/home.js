@@ -5,9 +5,9 @@ export default function Home() {
     return (
         <MainLayout>
             <FeaturedMedia />
-            <ForYouList />
+            {/* <ForYouList />
             <JustAdded />
-            <Posterview />
+            <Posterview /> */}
         </MainLayout>
     )
 }
