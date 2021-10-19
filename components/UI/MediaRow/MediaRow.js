@@ -1,28 +1,42 @@
 import React from 'react';
-import Image from 'next/image'
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { shuffleArray } from '../../utilities';
 
+
 const MediaRow = (props) => {
+
     const [loadingData, setLoadingData] = useState(true)
     const [moviesData, setMoviesData] = useState([])
 
     useEffect(() => {
-        // Make a request for a user with a given ID
-        axios.get(`https://api.themoviedb.org/3/${props.endpoint}&api_key=1c775e4294aadbc6f4ef96ec9024215b`)
+        const results = axios.post(`/api/path/${props.endpoint}`, {
+            path: `https://api.themoviedb.org/3/discover/${props.endpoint}`
+        })
             .then(function (response) {
                 // handle success
                 setMoviesData(shuffleArray(response.data.results))
                 setLoadingData(false)
-                console.log('Success Response For: ', props.title);
-                console.log(response);
             })
             .catch(function (error) {
                 // handle error
-                console.log('Error Response For: ', props.title);
-                console.log(error);
+                // console.log(error);
             })
+
+        // TOIMIVA
+        //     axios.get(`https://api.themoviedb.org/3/discover/${props.endpoint}&api_key=1c775e4294aadbc6f4ef96ec9024215b`)
+        //         .then(function (response) {
+        //             // handle success
+        //             setMoviesData(shuffleArray(response.data.results))
+        //             setLoadingData(false)
+        //             console.log('Success Response For: ', props.title);
+        //             console.log(response);
+        //         })
+        //         .catch(function (error) {
+        //             // handle error
+        //             console.log('Error Response For: ', props.title);
+        //             console.log(error);
+        //         })
 
     }, [])
 
@@ -38,7 +52,7 @@ const MediaRow = (props) => {
         return loadingData
             ? loopComp((<Skeleton />), 10)
             : moviesData.map((movie) => {
-                return <Thumbnail movieData={movie} />
+                return <Thumbnail key={movie.id} movieData={movie} />
             })
     }
     return (
