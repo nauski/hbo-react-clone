@@ -19,25 +19,8 @@ const MediaRow = (props) => {
                 setLoadingData(false)
             })
             .catch(function (error) {
-                // handle error
-                // console.log(error);
+                console.log(error);
             })
-
-        // TOIMIVA
-        //     axios.get(`https://api.themoviedb.org/3/discover/${props.endpoint}&api_key=1c775e4294aadbc6f4ef96ec9024215b`)
-        //         .then(function (response) {
-        //             // handle success
-        //             setMoviesData(shuffleArray(response.data.results))
-        //             setLoadingData(false)
-        //             console.log('Success Response For: ', props.title);
-        //             console.log(response);
-        //         })
-        //         .catch(function (error) {
-        //             // handle error
-        //             console.log('Error Response For: ', props.title);
-        //             console.log(error);
-        //         })
-
     }, [])
 
     const loopComp = (comp, digit) => {
