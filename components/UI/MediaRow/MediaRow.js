@@ -10,6 +10,7 @@ const MediaRow = (props) => {
     const [moviesData, setMoviesData] = useState([])
 
     useEffect(() => {
+        console.log("COMPONENT LOADED")
         const results = axios.post(`/api/path/${props.endpoint}`, {
             path: `https://api.themoviedb.org/3/discover/${props.endpoint}`
         })
