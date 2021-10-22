@@ -1,8 +1,8 @@
 import React from 'react';
-import Image from 'next/image'
 import Account from '../Account/Account'
 import SearchModal from '../SearchModal/SearchModal';
 import { useStateContext } from '../../HBOProvider';
+import Link from 'next/link';
 
 const Header = (props) => {
     const globalState = useStateContext();
@@ -17,11 +17,11 @@ const Header = (props) => {
                     <i className="fas fa-search"></i>
                 </div>
             </div>
-            <div className="top-header__logo">
-
-            </div>
+            <Link href="/">
+                <a><div className="top-header__logo" ></div></a>
+            </Link>
             <div className="top-header__account" onClick={() => globalState.setAccountModalOpenAction(!globalState.accountModalOpen)}>
-                <Image src="https://randomuser.me/api/portraits/women/95.jpg" width={30} height={30} alt="" className="top-header__user-img" />
+                <img src="https://randomuser.me/api/portraits/women/95.jpg" alt="" className="top-header__user-img" />
                 <div className="top-header__user-name">Mary</div>
             </div>
             <Account />

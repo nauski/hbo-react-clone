@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image'
 import Link from 'next/link'
 import { useStateContext } from '../../HBOProvider';
 
@@ -23,7 +22,7 @@ const Account = () => {
                 </div>
                 <div className="account__watch-list">
                     {loopComp((<div className="account__watch-video">
-                        <Image src="https://muropaketti.com/wp-content/uploads/2016/08/rick_and_morty-nosto-1024x576.jpg" width="220px" height="220px" alt="" />
+                        <img src="https://muropaketti.com/wp-content/uploads/2016/08/rick_and_morty-nosto-1024x576.jpg" />
                         <div className="account__watch-overlay">
                             <div className="account__watch-buttons">
                                 <div className="account__watch-circle">

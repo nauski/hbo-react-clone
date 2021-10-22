@@ -18,6 +18,15 @@ export function HBOProvider({ children }) {
     const [accountModalOpen, setAccountModalOpenAction] = useState(false)
     const [searchOpen, setSearchOpenAction] = useState(false)
 
+    const genrePaths = {
+        Movies: "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&primary_release_year=2021",
+        Series: "https://api.themoviedb.org/3/discover/tv?primary_release_year=2021",
+        Action: "https://api.themoviedb.org/3/discover/movie?with_genres=28&primary_release_year=2021",
+        Horror: "https://api.themoviedb.org/3/discover/movie?with_genres=27&primary_release_year=2021",
+        Animations: "https://api.themoviedb.org/3/discover/movie?with_genres=16&primary_release_year=2021",
+        Scifi: "https://api.themoviedb.org/3/discover/movie?with_genres=878&primary_release_year=2021",
+    }
+
 
     return (
         <StateContext.Provider
@@ -30,7 +39,8 @@ export function HBOProvider({ children }) {
                 accountModalOpen,
                 setAccountModalOpenAction,
                 searchOpen,
-                setSearchOpenAction
+                setSearchOpenAction,
+                genrePaths
             }}>
             {children}
         </StateContext.Provider>

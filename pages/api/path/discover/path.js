@@ -8,9 +8,8 @@ export default async function handler(req, res) {
     return
   }
 
-  const endpoint = req.body.path
-
-  const response = await axios.get(endpoint + process.env.api_key)
+  const endpoint = req.body.content.path
+  const response = await axios.get(endpoint + "&" + process.env.api_key)
   res.status(200).json(response.data)
 
 }

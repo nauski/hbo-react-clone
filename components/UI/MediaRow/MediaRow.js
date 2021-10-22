@@ -2,25 +2,49 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { shuffleArray } from '../../utilities';
-
+import { useStateContext } from '../../HBOProvider';
+import Link from 'next/link';
 
 const MediaRow = (props) => {
+
+    const globalState = useStateContext();
 
     const [loadingData, setLoadingData] = useState(true)
     const [moviesData, setMoviesData] = useState([])
 
     useEffect(() => {
-        const results = axios.post(`/api/path/${props.endpoint}`, {
-            path: `https://api.themoviedb.org/3/discover/${props.endpoint}`
-        })
-            .then(function (response) {
-                // handle success
-                setMoviesData(shuffleArray(response.data.results))
-                setLoadingData(false)
+        if (!props.pathId) {
+            // If Path ID is not specified, then use DISCOVER route
+            axios.post(`/api/path/discover/path`, {
+                content: {
+                    path: props.endpoint,
+                }
             })
-            .catch(function (error) {
-                console.log(error);
+                .then(function (response) {
+                    // handle success
+                    setMoviesData(shuffleArray(response.data.results))
+                    setLoadingData(false)
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        } else {
+            // If Path ID is specified, then use MOVIE route
+            axios.post(`/api/path/movie/${props.pathId}`, {
+                content: {
+                    path: props.endpoint,
+                }
             })
+                .then(function (response) {
+                    // handle success
+                    setMoviesData(shuffleArray(response.data.similar.results))
+                    setLoadingData(false)
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        }
+
     }, [])
 
     const loopComp = (comp, digit) => {
@@ -40,12 +64,14 @@ const MediaRow = (props) => {
     }
 
     return (
+
         <div className={`media-row ${props.type}`}>
             <h3 className="media-row__title">{props.title}</h3>
             <div className="media-row__thumbnails">
                 {showThumbnails(props.type)}
             </div>
         </div>
+
     );
 };
 
@@ -65,12 +91,16 @@ const Thumbnail = (props) => {
         }
     }
     return (
-        <div className="media-row__thumbnail">
-            <img src={`https://image.tmdb.org/t/p/w${thumbSize(props.type)}${props.movieData.poster_path}`} alt="" />
-            <div className="media-row__top-layer">
-                <i className="fas fa-play" />
-            </div>
-        </div>
+        <Link href={`/movie/${props.movieData.id}`}>
+            <a>
+                <div className="media-row__thumbnail">
+                    <img src={`https://image.tmdb.org/t/p/w${thumbSize(props.type)}${props.movieData.poster_path}`} alt="" />
+                    <div className="media-row__top-layer">
+                        <i className="fas fa-play" />
+                    </div>
+                </div>
+            </a>
+        </Link>
     )
 }
 
