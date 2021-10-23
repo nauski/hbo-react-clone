@@ -22,7 +22,7 @@ const Header = (props) => {
             </Link>
             <div className="top-header__account" onClick={() => globalState.setAccountModalOpenAction(!globalState.accountModalOpen)}>
                 <img src="https://randomuser.me/api/portraits/women/95.jpg" alt="" className="top-header__user-img" />
-                <div className="top-header__user-name">Mary</div>
+                <div className="top-header__user-name">{globalState.user}</div>
             </div>
             <Account />
             <SearchModal />
