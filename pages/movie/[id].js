@@ -28,7 +28,7 @@ export default function SingleMediaPage(props) {
                 console.log(error);
             })
     }, [])
-    debugger
+
     return AuthCheck(
         <MainLayout>
 
@@ -40,7 +40,7 @@ export default function SingleMediaPage(props) {
             <LazyLoad height={680} offset={400} placeholder={<PlaceHolders title="Movies" type="large-v" />}>
                 <MediaRow title="Similar To This" type="small-v" pathId={props.query.id} endpoint={`https://api.themoviedb.org/3/movie/${props.query.id}`} />
             </LazyLoad>
-            <CastInfo />
+            <CastInfo mediaId={props.query.id} />
         </MainLayout>
     )
 }

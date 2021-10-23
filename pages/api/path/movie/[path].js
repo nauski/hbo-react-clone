@@ -13,10 +13,12 @@ export default async function handler(req, res) {
   const endpoint = req.body.content.path
   const mediaData = await axios.get(endpoint + "?" + process.env.api_key)
   const similar = await axios.get(endpoint + "/similar?" + process.env.api_key)
+  const credits = await axios.get(endpoint + "/credits?" + process.env.api_key)
 
   const responseObj = {
     data: mediaData.data,
-    similar: similar.data
+    similar: similar.data,
+    credits: credits.data
   }
 
   res.status(200).json(responseObj)
