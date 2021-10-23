@@ -48,7 +48,7 @@ export default function CreateUser() {
                     </span>
                 </div>
                 <div className="create-user__form">
-                    <Image src={globalState.defaultUserImage} width="125px" height="125px" alt="" className="create-user__user-img" />
+                    <img src={globalState.defaultUserImage} alt="" className="create-user__user-img" />
                     <div className="create-user__input-group">
                         <label>Name</label>
                         <input value={globalState.user} onChange={globalState.createUserAction} type="text" className="create-user__inputText" />
@@ -58,8 +58,8 @@ export default function CreateUser() {
                                 background: 'linear-gradient(135deg, rgba(2,27,64,1) 11%, rgba(119,30,135,1) 100%)'
                             }} />
                             <div className="create-user__color create-user__color" style={{
-                                background: 'rgb(238,174,202)',
-                                background: 'radial-gradient(135deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)'
+                                background: 'rgb(34,33,35)',
+                                background: 'linear-gradient(135deg, rgba(34,33,35,1) 0%, rgba(253,187,45,1) 100%)'
                             }} />
                             <div className="create-user__color create-user__color" style={{
                                 background: 'rgb(34,193,195)',
